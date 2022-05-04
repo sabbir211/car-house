@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import { Carousel } from 'react-bootstrap';
-
+import banner from "../../../images/banner.jpg"
 const Banner = () => {
-    const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
     return (
         <div>
-         <img src="banner.jpg"  className="w-100" alt="" />
+         <img src={banner} className="w-100" alt="" />
         </div>
     );
 };

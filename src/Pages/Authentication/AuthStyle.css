@@ -1,3 +1,13 @@
 .loginContainer{
-    
+    min-height: 100vh;
+}
+.inputField{
+    border: none;
+    border-bottom: 1px solid rgb(240, 229, 229);
+}
+.inputField:focus{
+    outline: none;
+}
+.cursor-pointer{
+    cursor: pointer;
 }
