@@ -1,0 +1,6 @@
+.navbar{
+    background: linear-gradient(90deg, rgba(22,19,77,1) 10%, rgba(12,18,126,1) 49%, rgba(32,79,159,1) 79%);
+}
+.linkText:hover{
+background-color: #ff7824;
+}

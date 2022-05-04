@@ -1,9 +1,9 @@
 import React from 'react';
-
+import "../AuthStyle.css"
 const Login = () => {
     return (
-        <div>
-            <h3>i am from login</h3>
+        <div className='loginContainer'>
+           
         </div>
     );
 };
