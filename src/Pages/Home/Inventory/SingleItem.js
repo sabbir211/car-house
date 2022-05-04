@@ -11,25 +11,23 @@ const SingleItem = ({ car }) => {
                         <Card.Img variant="top" src={img} className="w-100" />
                         <Card.Body>
                             <Card.Title>{name}</Card.Title>
-                            <Card.Text>
-                                <article className="text-muted">
-                                    {description}
-                                </article>
-                                <div>
-                                    <div className='d-flex align-items-center mt-2 mx-auto'>
-                                         <p >Price: $ <span className='text-warning fs-4'>{price}</span>/car</p>
-                                        <p className='ms-3'>Quantity: {quantity}</p>
-
-                                    </div>
-                                    <p>Supplier: {supplier}</p>
-                                    <Card.Footer>
-                                        <button className='btn btn-outline-warning w-100'>Update</button>
-                                    </Card.Footer>
-                                </div>
-
+                            <Card.Text className="text-muted">
+                                {description}                                
+                            </Card.Text>
+                            <Card.Text className='d-flex align-items-center mt-2 mx-auto'>
+                                Price: $ <span className='text-info fs-4'>{price}</span> /car
+                                <span className='ms-3'> Quantity: {quantity} </span>
 
                             </Card.Text>
+                            <Card.Text>
+
+                            Supplier: {supplier} 
+                            </Card.Text>
                         </Card.Body>
+                        <Card.Footer>
+                            <button className='btn btn-outline-info w-100'>Update</button>
+                        </Card.Footer>
+
                     </Card>
                 </div>
             </Col>
