@@ -10,6 +10,8 @@ import Update from './Pages/Update/Update';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import ManageInventoris from "./Pages/ManageInventory/ManageInventoris"
 import AddCar from './Pages/AddCar/AddCar';
+import Blogs from './Pages/Blogs/Blogs';
+import MyCars from './Pages/Mycars/MyCars';
 function App() {
   return (
     <div>
@@ -24,8 +26,23 @@ function App() {
           <Update/>
         </RequireAuth>       
         }></Route>
-        <Route path='/manageInventoris' element={<ManageInventoris/>}></Route>
-        <Route path='/addcar' element={<AddCar/>}></Route>
+
+        <Route path='/manageInventoris' element={
+          <RequireAuth>
+          <ManageInventoris/>
+        </RequireAuth>
+        }></Route>
+        <Route path='/addcar' element={
+          <RequireAuth>
+          <AddCar/>          
+        </RequireAuth>
+        }></Route>
+        <Route path='/mycars' element={
+          <RequireAuth>
+          <MyCars/>
+        </RequireAuth>
+        }></Route>
+        <Route path='/blogs' element={<Blogs/>}></Route>
         <Route path='*' element={<NotFound/>} />
         
       </Routes>

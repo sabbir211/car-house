@@ -1,13 +1,28 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
 import React, { useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { useForm } from 'react-hook-form';
+import { toast,ToastContainer } from 'react-toastify';
+import auth from '../../firebase.init';
+import CustomSpin from '../../UtilityComponents/CustomSpin';
 
 const AddCar = () => {
     const { register, handleSubmit } = useForm();
     const resetRef = useRef(null)
+    const [user,loading]=useAuthState(auth)
+if(loading){
+    return <CustomSpin></CustomSpin>
+}
+    const email=  user.email ;
     const handleAddCar = (data) => {
-        axios.post("http://localhost:5000/addcar", { data })
-            .then(() =>  resetRef.current.click())
+        const cardata={...data,email }
+        axios.post("http://localhost:5000/addcar", { cardata })
+            .then(() => { 
+                resetRef.current.click()
+                toast("Car added successfully")
+            })
     }
     return (
         <div className='min-vh-100'>
@@ -47,6 +62,7 @@ const AddCar = () => {
                     <input type="reset" ref={resetRef} value="Reset" className='btn btn-danger w-100 rounded-pill my-4' />
                 </form>
             </div>
+                <ToastContainer position='bottom-center'></ToastContainer>
         </div>
 
     );
