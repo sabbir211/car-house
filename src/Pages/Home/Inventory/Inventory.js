@@ -18,7 +18,7 @@ const Inventory = () => {
                 }
             </Row>
             <div className='text-center '>
-                <Link to="/ManageInventoris" className='btn btn-warning my-3'>Manage inventory</Link>
+                <Link to="/manageInventoris" className='btn btn-warning my-3'>Manage inventory</Link>
             </div>
         </div>
     );

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './Pages/Shared/Header/Header';
 import Footer from './Pages/Shared/Footer/Footer';
@@ -25,7 +24,7 @@ function App() {
           <Update/>
         </RequireAuth>       
         }></Route>
-        <Route path='/ManageInventoris' element={<ManageInventoris/>}></Route>
+        <Route path='/manageInventoris' element={<ManageInventoris/>}></Route>
         <Route path='/addcar' element={<AddCar/>}></Route>
         <Route path='*' element={<NotFound/>} />
         

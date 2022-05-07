@@ -15,16 +15,23 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link className="linkText mb-0 px-3 mx-2 border-bottom py-2 text-white" as={Link} to="/">Home</Nav.Link>
-              <Nav.Link className="linkText mb-0 px-3 mx-2 border-bottom py-2 text-white" as={Link} to="/blog">Pricing</Nav.Link>
+              <Nav.Link className="linkText mb-0  py-2 text-white" as={Link} to="/">Home</Nav.Link>
+              {
+                user && <> <Nav.Link className="linkText mb-0 py-2 text-white" as={Link} to="/manageInventoris">Manage Inventories</Nav.Link>
+                <Nav.Link className="linkText mb-0 py-2 text-white" as={Link} to="/addCar" >Add Car</Nav.Link> 
+                </>
+              }
+              
             </Nav>
             <Nav>
               {
                 user ? <>
-                  <Nav.Link className="linkText mb-0 px-3 mx-2 border-bottom py-2 text-white" onClick={()=>signOut(auth)}>Sign out</Nav.Link>
+
+                  <Nav.Link className="linkText mb-0 py-2 text-white" onClick={() => signOut(auth)}>Sign out</Nav.Link>
+
                 </> : <>
-                  <Nav.Link className="linkText mb-0 px-3 mx-2 border-bottom py-2 text-white" as={Link} to="Login">Login</Nav.Link>
-                  <Nav.Link className="linkText mb-0 px-3 mx-2 border-bottom py-2 text-white" as={Link} to="/register">
+                  <Nav.Link className="linkText mb-0 py-2 text-white" as={Link} to="Login">Login</Nav.Link>
+                  <Nav.Link className="linkText mb-0 py-2 text-white" as={Link} to="/register">
                     Register
                   </Nav.Link>
                 </>

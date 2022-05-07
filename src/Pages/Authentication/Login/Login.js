@@ -13,7 +13,6 @@ import { Spinner } from 'react-bootstrap';
 const Login = () => {
     const navigate = useNavigate()
     const [reset, setReset] = useState(false)
-    const [show, setShow] = useState(true);
     const { register, handleSubmit } = useForm();
     const location=useLocation()
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
