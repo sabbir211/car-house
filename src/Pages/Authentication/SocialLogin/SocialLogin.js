@@ -5,12 +5,20 @@ import github from "../../../images/Logo/github.png"
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { Spinner } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
     if (loading || githubLoading) {
         return <Spinner animation="border" variant="primary"></Spinner>
+    }
+
+    if (user || githubUser) {
+        navigate(from, { replace: true })
     }
     return (
         <div>

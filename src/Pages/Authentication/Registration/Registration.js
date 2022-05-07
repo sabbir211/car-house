@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import "../AuthStyle.css"
@@ -12,6 +12,9 @@ const Registration = () => {
     const [show, setShow] = useState(true);
     const navigate=useNavigate()
     const [storedUser]=useAuthState(auth)
+    const location=useLocation()
+    let from = location.state?.from?.pathname || "/";
+
     const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
@@ -33,7 +36,7 @@ const Registration = () => {
     }
     
     if (user) {
-       navigate("/")
+       navigate(from,{replace:true})
     }
     if (errorUpdate) {
         console.log(errorUpdate);

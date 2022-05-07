@@ -9,9 +9,9 @@ const Header = () => {
   const [user] = useAuthState(auth)
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" sticky='top' className='navbar' >
+      <Navbar collapseOnSelect expand="lg" sticky="top" className='navbar' >
         <Container>
-          <Navbar.Brand href="#home" className='text-white'>Car House</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/home" className='text-white'>Car House</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
