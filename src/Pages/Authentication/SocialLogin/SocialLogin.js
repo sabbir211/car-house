@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import google from "../../../images/Logo/google.png"
 import facebook from "../../../images/Logo/facebook.png"
 import github from "../../../images/Logo/github.png"
@@ -13,13 +13,19 @@ const SocialLogin = () => {
     let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+
+    useEffect(() => {
+        if (user || githubUser) {
+            navigate(from, { replace: true })
+        }
+    }, [user])
+
     if (loading || githubLoading) {
         return <Spinner animation="border" variant="primary"></Spinner>
     }
+   
 
-    if (user || githubUser) {
-        navigate(from, { replace: true })
-    }
+
     return (
         <div>
             {

@@ -31,7 +31,7 @@ navigate(`/inventory/${id}`)
                         </Card.Body>
                         <Card.Footer>
                             <button 
-                            className='btn btn-outline-info w-100' 
+                            className='btn btn-outline-primary w-100' 
                             onClick={()=>{
                                 handleUpdate(_id)
                             }}

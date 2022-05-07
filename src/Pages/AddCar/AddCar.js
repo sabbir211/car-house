@@ -9,8 +9,8 @@ import auth from '../../firebase.init';
 import CustomSpin from '../../UtilityComponents/CustomSpin';
 
 const AddCar = () => {
-    const { register, handleSubmit } = useForm();
-    const resetRef = useRef(null)
+    const { register, handleSubmit,reset } = useForm();
+   
     const [user,loading]=useAuthState(auth)
 if(loading){
     return <CustomSpin></CustomSpin>
@@ -20,8 +20,8 @@ if(loading){
         const cardata={...data,email }
         axios.post("http://localhost:5000/addcar", { cardata })
             .then(() => { 
-                resetRef.current.click()
                 toast("Car added successfully")
+                reset()
             })
     }
     return (
@@ -59,7 +59,7 @@ if(loading){
                         <input id='quantity' type="number" className='inputField w-100 ' {...register("quantity")} required />
                     </div>
                     <input type="submit" value="Add Car" className='btn btn-primary rounded-pill w-100' />
-                    <input type="reset" ref={resetRef} value="Reset" className='btn btn-danger w-100 rounded-pill my-4' />
+                    <input type="reset"  value="Reset" className='btn btn-danger w-100 rounded-pill my-4' />
                 </form>
             </div>
                 <ToastContainer position='bottom-center'></ToastContainer>

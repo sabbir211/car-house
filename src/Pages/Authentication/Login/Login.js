@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import "../AuthStyle.css"
 import { Link, useLocation, useNavigate } from "react-router-dom"
@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate()
     const [reset, setReset] = useState(false)
     const { register, handleSubmit } = useForm();
-    const location=useLocation()
+    const location = useLocation()
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
         auth
     );
@@ -28,12 +28,19 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [user])
     if (loading) {
         return <CustomSpin></CustomSpin>
     }
-    if (user) {      
-        navigate(from, { replace: true });
-    }
+
+
+
+
 
     const handleReset = async (data) => {
         await sendPasswordResetEmail(data.resetEmail)
@@ -74,11 +81,11 @@ const Login = () => {
                                 </div>
                                 {resetError && <p> {error?.message} </p>}
                                 {
-                                    sending ? <Spinner variant='success' animation="border" className=" d-block mx-auto"/>
+                                    sending ? <Spinner variant='success' animation="border" className=" d-block mx-auto" />
                                         :
                                         <input type="submit" value="Reset" className='my-1 btn btn-primary rounded-pill w-100' />
                                 }
-                               
+
                             </form>
                             <h6 className='text-info my-1 mb-3 pointer-cursor' onClick={() => setReset(false)}>Have password ?</h6>
                         </>

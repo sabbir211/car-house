@@ -1,0 +1,11 @@
+.footContainer{
+    background-color: rgba(12, 5, 94, 0.856);
+}
+.footImgContainer img{
+    width: 2.5rem;
+    margin: 4px;
+    cursor: pointer;
+}
+.copyRights{
+    background-color: rgba(46, 38, 153, 0.822);
+}
