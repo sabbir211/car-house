@@ -9,6 +9,8 @@ import NotFound from './Pages/NotFound/NotFound';
 import Registration from './Pages/Authentication/Registration/Registration'
 import Update from './Pages/Update/Update';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import ManageInventoris from "./Pages/ManageInventory/ManageInventoris"
+import AddCar from './Pages/AddCar/AddCar';
 function App() {
   return (
     <div>
@@ -23,6 +25,8 @@ function App() {
           <Update/>
         </RequireAuth>       
         }></Route>
+        <Route path='/ManageInventoris' element={<ManageInventoris/>}></Route>
+        <Route path='/addcar' element={<AddCar/>}></Route>
         <Route path='*' element={<NotFound/>} />
         
       </Routes>

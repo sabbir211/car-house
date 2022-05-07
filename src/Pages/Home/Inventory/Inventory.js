@@ -1,14 +1,12 @@
 import axios from 'axios';
-import React ,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useCars from '../../../Hooks/useCars';
 import SingleItem from './SingleItem';
 
 const Inventory = () => {
-const [cars,setCars]=useState([])
-useEffect(()=>{
- axios.get(`http://localhost:5000/inventory?size=${6}`)
-.then(res=>setCars(res.data))   
-},[])
+    const [cars,setCars]=useCars(6)
     return (
         <div className="container mx-auto">
             <h2 className='text-center my-3'>Featured Cars</h2>
@@ -18,8 +16,10 @@ useEffect(()=>{
                         return <SingleItem car={car} key={index}></SingleItem>
                     })
                 }
-          </Row>
-
+            </Row>
+            <div className='text-center '>
+                <Link to="/ManageInventoris" className='btn btn-warning my-3'>Manage inventory</Link>
+            </div>
         </div>
     );
 };

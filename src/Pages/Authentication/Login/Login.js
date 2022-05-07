@@ -14,6 +14,7 @@ const Login = () => {
     const navigate = useNavigate()
     const [reset, setReset] = useState(false)
     const [show, setShow] = useState(true);
+    const { register, handleSubmit } = useForm();
     const location=useLocation()
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
         auth
@@ -25,7 +26,6 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
