@@ -1,0 +1,8 @@
+.res-width{
+    width: 50%;
+}
+@media screen and (max-width:576px) {
+    .res-width{
+        width: 100%;
+    }
+}
