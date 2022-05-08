@@ -5,6 +5,8 @@ import linkedin from "../../../images/Logo/linkedin.png"
 import twitter from "../../../images/Logo/twitter.png"
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLocationDot, faMobile, faPhone } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     const { register, handleSubmit,reset } = useForm();
 
@@ -18,9 +20,20 @@ const Footer = () => {
             <div className='container py-4 d-flex flex-column flex-md-row justify-content-between'>
                 <div>
                     <h2>CONTACT INFO</h2>
-                    <p>20/13 Fulbari,Natore,Bangladesh</p>
-                    <p>sabbir21122@gmail.com</p>
-                    <p> +8801756035663</p>
+                    <p>
+                        <FontAwesomeIcon icon={faLocationDot} className="me-2"></FontAwesomeIcon>
+                        20/13 Fulbari,Natore,Bangladesh
+                        </p>
+                    <p>
+                    <FontAwesomeIcon icon={faEnvelope} className="me-2"></FontAwesomeIcon>
+
+                        sabbir21122@gmail.com
+                        </p>
+                    <p> 
+                    <FontAwesomeIcon icon={faPhone} className="me-2"></FontAwesomeIcon>
+
+                        +8801756035663
+                        </p>
                     <div className='footImgContainer'>
                         <a href="https://www.facebook.com/sabbir1144" target="blank"> <img src={facebook} alt="" /></a>
 

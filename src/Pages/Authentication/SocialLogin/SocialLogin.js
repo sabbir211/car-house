@@ -32,12 +32,14 @@ const[token]=useToken(user||githubUser)
             {
                 error && <p className='text-danger'> Sorry {error.message.split('/')[1].split(")")[0]}</p>
             }
+            {
+                githubError && <p className='text-danger'> Sorry {githubError.message.split('/')[1].split(")")[0]}</p>
+            }
 
             <div className='text-muted'>
                 Continue with
                 <img onClick={() => signInWithGoogle()} width="35px" className='mx-2 shadow cursor-pointer rounded-circle' src={google} alt="" />
                 <img onClick={() => signInWithGithub()} width="35px" className='mx-2 shadow cursor-pointer rounded-circle' src={github} alt="" />
-                <img width="35px" className='mx-2 shadow cursor-pointer rounded-circle' src={facebook} alt="" />
             </div>
         </div>
     );

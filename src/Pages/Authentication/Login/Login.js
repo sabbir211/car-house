@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import useToken from '../../../Hooks/useToken';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -27,20 +29,20 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const [token]=useToken(user)
+    const [token] = useToken(user)
     const onSubmit = async (data) => {
         const email = data.email
         await signInWithEmailAndPassword(email, data.password)
-    //     const res = await axios.post('https://young-crag-76268.herokuapp.com/login', { email })
-    //    localStorage.setItem("accessToken",res.data);
-  
+        //     const res = await axios.post('https://young-crag-76268.herokuapp.com/login', { email })
+        //    localStorage.setItem("accessToken",res.data);
+
 
     };
-if (token) {
-    navigate(from,{replace:true})
-    
-}
-   
+    if (token) {
+        navigate(from, { replace: true })
+
+    }
+
     if (loading) {
         return <CustomSpin></CustomSpin>
     }
@@ -63,13 +65,19 @@ if (token) {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className=' my-3'>
                                     <label className='text-muted' htmlFor="email">Email</label>
-                                    <input id='email' type="email" className='inputField w-100' {...register("email")}
-                                        required /><br />
+                                    <div className='d-flex '>
+                                        <span className='border-bottom'>   <FontAwesomeIcon icon={faEnvelope} className="me-2"></FontAwesomeIcon></span>
+                                        <input id='email' type="email" className='inputField w-100' {...register("email")}
+                                            required /><br />
+                                    </div>
+
                                 </div>
                                 <div className=' my-3'>
-
-                                    <label className='text-muted' htmlFor="password">Password</label>
+                          <label className='text-muted' htmlFor="password">Password</label>
+                                   <div className='d-flex'>
+                                       <span className="border-bottom"> <FontAwesomeIcon icon={faLock} className="me-2"></FontAwesomeIcon></span>
                                     <input id='password' type="password" className='inputField w-100 ' {...register("password")} required />
+                                   </div>
 
                                 </div>
                                 <p className="text-danger">{error?.message.split("/")[1].split(')')[0]}</p>

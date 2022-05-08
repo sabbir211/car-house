@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faCoffee, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -29,7 +31,9 @@ const Header = () => {
               {
                 user ? <>
 
-                  <Nav.Link className="linkText mb-0 py-2 text-white" onClick={() => signOut(auth)}>Sign out</Nav.Link>
+                  <Nav.Link className="linkText mb-0 py-2 text-white" onClick={() => signOut(auth)}>
+                    <FontAwesomeIcon icon={faRightFromBracket}></FontAwesomeIcon>
+                    Sign out</Nav.Link>
 
                 </> : <>
                   <Nav.Link className="linkText mb-0 py-2 text-white" as={Link} to="Login">Login</Nav.Link>
