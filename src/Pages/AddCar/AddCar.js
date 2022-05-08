@@ -18,7 +18,7 @@ if(loading){
     const email=  user.email ;
     const handleAddCar = (data) => {
         const cardata={...data,email }
-        axios.post("http://localhost:5000/addcar", { cardata })
+        axios.post("https://young-crag-76268.herokuapp.com/addcar", { cardata })
             .then(() => { 
                 toast("Car added successfully")
                 reset()

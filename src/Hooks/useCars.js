@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const useCars=(limit)=>{
     const [cars, setCars] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:5000/inventory?size=${limit}`)
+        axios.get(`https://young-crag-76268.herokuapp.com/inventory?size=${limit}`)
             .then(res => setCars(res.data))
     }, [])
     return [cars,setCars]

@@ -12,7 +12,7 @@ const Update = () => {
 
     useEffect(() => {
         const getSingleItem = async () => {
-            const response = await axios.get(`http://localhost:5000/inventory/${id}`)
+            const response = await axios.get(`https://young-crag-76268.herokuapp.com/inventory/${id}`)
             console.log(response.data);
             setCar(response.data)
         }
@@ -34,7 +34,7 @@ const Update = () => {
         }
     }
     const updateQuantity = async (newQuantity) => {
-        const response = await axios.put(`http://localhost:5000/update/${id}`, { newQuantity })
+        const response = await axios.put(`https://young-crag-76268.herokuapp.com/update/${id}`, { newQuantity })
         setNewQuantity(newQuantity);
 
     }

@@ -5,26 +5,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
+import useMyCars from '../../Hooks/useMyCars';
 import CustomSpin from '../../UtilityComponents/CustomSpin';
 import ManageInventory from '../ManageInventory/ManageInventory';
 
 const MyCars = () => {
     const [user, loading] = useAuthState(auth)
-    const [myCars, setMyCars] = useState([])
-    const navigate=useNavigate()
-    useEffect(() => {
-        const email = user?.email
-        axiosPrivate.get(`http://localhost:5000/userscar?email=${email}`)
-        .then(res => setMyCars(res.data))
-        .catch(error=>{
-            if(error.response.status===401 || error.response.status===403 ){
-                console.log('get out');
-                signOut(auth)
-                navigate("/login")
-            }
-        })
-
-    }, [user])
+    const [myCars,setMyCars]=useMyCars(user)
     if (loading) {
         return <CustomSpin></CustomSpin>
     }
@@ -33,7 +20,7 @@ const MyCars = () => {
 
     }
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/userscar/${id}`)
+        axios.delete(`https://young-crag-76268.herokuapp.com/userscar/${id}`)
             .then(res => {
                 if (res.data.deletedCount >= 1) {
                     const restMyCars = myCars.filter(car => car._id !== id)
