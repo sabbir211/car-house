@@ -26,13 +26,13 @@ const Registration = () => {
 
 
     const onSubmit = async (data) => {
-     
+
         const displayName = data.name
         await createUserWithEmailAndPassword(data.email, data.password)
         updateProfile({ displayName })
 
     };
-    const [token]=useToken(user)
+    const [token] = useToken(user)
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true })
@@ -43,9 +43,10 @@ const Registration = () => {
         return <CustomSpin></CustomSpin>
     }
 
-   
+
     if (updating) {
         return (
+
             <div className='d-flex justify-content-center align-items-center min-width'>
                 <Spinner
                     animation="border"
@@ -59,8 +60,11 @@ const Registration = () => {
         <div className='loginContainer'>
             <div className='container mx-auto d-flex justify-content-center'>
                 <div className=''>
+
                     <div className='mt-4 mx-4 p-4 shadow rounded-4'>
                         <h2>Please Register</h2>
+                        <p className='text-danger'>{error?.message.split("/")[1].split(')')[0]}</p>
+
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className=' my-3'>
                                 <label className='text-muted' htmlFor="name">Name</label>
