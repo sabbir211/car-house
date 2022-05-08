@@ -6,6 +6,7 @@ import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/a
 import auth from '../../../firebase.init';
 import { Spinner } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../../Hooks/useToken';
 
 const SocialLogin = () => {
     const location = useLocation()
@@ -13,12 +14,12 @@ const SocialLogin = () => {
     let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
-
+const[token]=useToken(user||githubUser)
     useEffect(() => {
-        if (user || githubUser) {
+        if (token) {
             navigate(from, { replace: true })
         }
-    }, [user])
+    }, [token])
 
     if (loading || githubLoading) {
         return <Spinner animation="border" variant="primary"></Spinner>

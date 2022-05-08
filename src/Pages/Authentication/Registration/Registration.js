@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, Spinner } from 'react-bootstrap';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -7,12 +7,13 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import "../AuthStyle.css"
 import CustomSpin from '../../../UtilityComponents/CustomSpin';
+import useToken from '../../../Hooks/useToken';
 const Registration = () => {
     const { register, handleSubmit } = useForm();
     const [show, setShow] = useState(true);
-    const navigate=useNavigate()
-    const [storedUser]=useAuthState(auth)
-    const location=useLocation()
+    const navigate = useNavigate()
+    const [storedUser] = useAuthState(auth)
+    const location = useLocation()
     let from = location.state?.from?.pathname || "/";
 
     const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
@@ -21,23 +22,27 @@ const Registration = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
-   
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
 
     const onSubmit = async (data) => {
         console.log(data)
         const displayName = data.name
         await createUserWithEmailAndPassword(data.email, data.password)
         updateProfile({ displayName })
-       
-    }; 
+
+    };
+    const [token]=useToken(user)
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true })
+        }
+    }, [token])
+
     if (loading) {
         return <CustomSpin></CustomSpin>
     }
-    
-    if (user) {
-       navigate(from,{replace:true})
-    }
+
     if (errorUpdate) {
         console.log(errorUpdate);
 
@@ -52,7 +57,7 @@ const Registration = () => {
                 </Spinner>
             </div>)
     }
-    
+
     return (
         <div className='loginContainer'>
             <div className='container mx-auto d-flex justify-content-center'>

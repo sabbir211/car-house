@@ -10,8 +10,13 @@ const MyCars = () => {
     const [myCars, setMyCars] = useState([])
     useEffect(() => {
         const email = user?.email
-        axios.get(`http://localhost:5000/userscar?email=${email}`)
+        axios.get(`http://localhost:5000/userscar?email=${email}`,{
+            headers:{
+                authorization:`bearer ${localStorage.getItem("accessToken")}`
+            }
+        })
             .then(res => setMyCars(res.data))
+
     }, [user])
     if (loading) {
         return <CustomSpin></CustomSpin>
@@ -22,12 +27,12 @@ const MyCars = () => {
     }
     const handleDelete = (id) => {
         axios.delete(`http://localhost:5000/userscar/${id}`)
-        .then(res=>{
-            if(res.data.deletedCount >= 1){
-                const restMyCars=myCars.filter(car=>car._id !== id)
-                setMyCars(restMyCars)
-            }
-        })
+            .then(res => {
+                if (res.data.deletedCount >= 1) {
+                    const restMyCars = myCars.filter(car => car._id !== id)
+                    setMyCars(restMyCars)
+                }
+            })
     }
 
 

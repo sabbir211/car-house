@@ -9,6 +9,8 @@ import CustomSpin from '../../../UtilityComponents/CustomSpin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Spinner } from 'react-bootstrap';
+import axios from 'axios';
+import useToken from '../../../Hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -25,15 +27,20 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
-    };
+    const [token]=useToken(user)
+    const onSubmit = async (data) => {
+        const email = data.email
+        await signInWithEmailAndPassword(email, data.password)
+    //     const res = await axios.post('http://localhost:5000/login', { email })
+    //    localStorage.setItem("accessToken",res.data);
+  
 
-    useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true });
-        }
-    }, [user])
+    };
+if (token) {
+    navigate(from,{replace:true})
+    
+}
+   
     if (loading) {
         return <CustomSpin></CustomSpin>
     }
