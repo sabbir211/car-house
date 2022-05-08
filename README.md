@@ -1,5 +1,5 @@
 # Car house 
-
+This web site like warehouse .here user can stock item remove item .
 ## Live site [site](https://car-house-57f8e.firebaseapp.com/).
 ## Backend Api link [site](https://young-crag-76268.herokuapp.com/).
 ## Client Side code link:[site](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-sabbir211)

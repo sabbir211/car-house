@@ -1,18 +1,19 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// import 'dotenv/config' 
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:"AIzaSyAqXYk1gPvslhz_UfnkIUCSRrq7zTjLifc",
-  authDomain:"car-house-57f8e.firebaseapp.com",
-  projectId:"car-house-57f8e",
-  storageBucket:"car-house-57f8e.appspot.com",
-  messagingSenderId:"386389374157",
-  appId:"1:386389374157:web:40ae5ed86614c078bde584",
+  apiKey:process.env.REACT_APP_USER_apiKey,
+  authDomain:process.env.REACT_APP_USER_authDomain,
+  projectId:process.env.REACT_APP_USER_projectId,
+  storageBucket:process.env.REACT_APP_USER_storageBucket,
+  messagingSenderId:process.env.REACT_APP_USER_messagingSenderId,
+  appId:process.env.REACT_APP_USER_appId,
 };
 
 // Initialize Firebase

@@ -38,10 +38,13 @@ const Login = () => {
 
 
     };
-    if (token) {
+    useEffect(()=>{
+      if (token) {
         navigate(from, { replace: true })
 
-    }
+    }  
+    },[token])
+    
 
     if (loading) {
         return <CustomSpin></CustomSpin>

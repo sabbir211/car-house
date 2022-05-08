@@ -13,7 +13,7 @@ const Update = () => {
     useEffect(() => {
         const getSingleItem = async () => {
             const response = await axios.get(`https://young-crag-76268.herokuapp.com/inventory/${id}`)
-            console.log(response.data);
+          
             setCar(response.data)
         }
         getSingleItem()
@@ -41,7 +41,6 @@ const Update = () => {
     // Restock functionality is here 
     const { register, handleSubmit,reset } = useForm();
     const handleRestock = async(data) => {
-        console.log(data);
       const newQuantity= quantity+parseInt(data.quantity)
      await updateQuantity(newQuantity)
       reset()

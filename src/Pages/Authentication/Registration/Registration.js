@@ -26,7 +26,7 @@ const Registration = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(data)
+     
         const displayName = data.name
         await createUserWithEmailAndPassword(data.email, data.password)
         updateProfile({ displayName })
@@ -43,10 +43,7 @@ const Registration = () => {
         return <CustomSpin></CustomSpin>
     }
 
-    if (errorUpdate) {
-        console.log(errorUpdate);
-
-    }
+   
     if (updating) {
         return (
             <div className='d-flex justify-content-center align-items-center min-width'>
