@@ -11,8 +11,8 @@ navigate(`/inventory/${id}`)
     return (
         <div>
             <Col>
-                <div className="d-flex align-items-stretch">
-                    <Card>
+                <div className="d-flex align-items-stretch ">
+                    <Card className=''>
                         <Card.Img variant="top" src={img} className="w-100" />
                         <Card.Body>
                             <Card.Title>{name}</Card.Title>
@@ -28,15 +28,16 @@ navigate(`/inventory/${id}`)
 
                             Supplier: {supplier} 
                             </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
                             <button 
                             className='btn btn-outline-primary w-100' 
                             onClick={()=>{
                                 handleUpdate(_id)
                             }}
                             >Update</button>
-                        </Card.Footer>
+                        </Card.Body>
+                      
+                            
+                  
 
                     </Card>
                 </div>

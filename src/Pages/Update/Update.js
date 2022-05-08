@@ -36,13 +36,15 @@ const Update = () => {
     const updateQuantity = async (newQuantity) => {
         const response = await axios.put(`http://localhost:5000/update/${id}`, { newQuantity })
         setNewQuantity(newQuantity);
+
     }
     // Restock functionality is here 
-    const { register, handleSubmit } = useForm();
-    const handleRestock = (data) => {
+    const { register, handleSubmit,reset } = useForm();
+    const handleRestock = async(data) => {
         console.log(data);
       const newQuantity= quantity+parseInt(data.quantity)
-      updateQuantity(newQuantity)
+     await updateQuantity(newQuantity)
+      reset()
     }
     return (
         <div className='container shadow min-vh-100 px-0'>
