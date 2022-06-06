@@ -5,8 +5,12 @@ import { Link } from 'react-router-dom';
 import useCars from '../../../Hooks/useCars';
 import SingleItem from './SingleItem';
 import "./inventory.css"
+import CustomSpin from "../../../UtilityComponents/CustomSpin"
 const Inventory = () => {
-    const [cars, setCars] = useCars(6)
+    const [cars,setCar,loading] = useCars(6)
+    if(loading){
+        return <CustomSpin></CustomSpin>
+    }
     return (
         <div className=" inventoryContainer">
             <div className='container mx-auto'>

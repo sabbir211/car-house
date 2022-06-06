@@ -9,7 +9,7 @@ const CustomSpin = () => {
                     variant='primary'
                 >
                 </Spinner>
-            </div>
+         </div>
     );
 };
 
