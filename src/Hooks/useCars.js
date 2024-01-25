@@ -8,7 +8,7 @@ const useCars = (limit) => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://young-crag-76268.herokuapp.com/inventory?size=${limit}`)
+        axios.get(`https://car-house-bcsm.onrender.com/inventory?size=${limit}`)
             .then(res => {
                 setCars(res.data)
                 setLoading(false)

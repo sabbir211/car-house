@@ -17,7 +17,7 @@ if (loading) {
   
 }
   const handleDelete = (id) => {
-    axios.delete(`https://young-crag-76268.herokuapp.com/deletecar/${id}`)
+    axios.delete(`https://car-house-bcsm.onrender.com/deletecar/${id}`)
       .then(res => {
         if (res.data.deletedCount >= 1) {
           const restCars = cars.filter(car => car._id !== id)
@@ -26,7 +26,7 @@ if (loading) {
       })
   }
   const handleDeleteMyCars = (id) => {
-    axios.delete(`https://young-crag-76268.herokuapp.com/userscar/${id}`)
+    axios.delete(`https://car-house-bcsm.onrender.com/userscar/${id}`)
         .then(res => {
             if (res.data.deletedCount >= 1) {
                 const restMyCars = myCars.filter(car => car._id !== id)

@@ -9,7 +9,7 @@ const useMyCars = (user) => {
     const navigate = useNavigate()
     useEffect(() => {
         const email = user?.email
-        axiosPrivate.get(`https://young-crag-76268.herokuapp.com/userscar?email=${email}`)
+        axiosPrivate.get(`https://car-house-bcsm.onrender.com/userscar?email=${email}`)
             .then(res => setMyCars(res.data))
             .catch(error => {
                 if (error.response.status === 401 || error.response.status === 403) {

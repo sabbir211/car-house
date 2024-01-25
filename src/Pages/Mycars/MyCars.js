@@ -20,7 +20,7 @@ const MyCars = () => {
 
     }
     const handleDelete = (id) => {
-        axios.delete(`https://young-crag-76268.herokuapp.com/userscar/${id}`)
+        axios.delete(`https://car-house-bcsm.onrender.com/userscar/${id}`)
             .then(res => {
                 if (res.data.deletedCount >= 1) {
                     const restMyCars = myCars.filter(car => car._id !== id)

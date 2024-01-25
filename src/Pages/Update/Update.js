@@ -12,7 +12,7 @@ const Update = () => {
 
     useEffect(() => {
         const getSingleItem = async () => {
-            const response = await axios.get(`https://young-crag-76268.herokuapp.com/inventory/${id}`)
+            const response = await axios.get(`https://car-house-bcsm.onrender.com/inventory/${id}`)
           
             setCar(response.data)
         }
@@ -34,7 +34,7 @@ const Update = () => {
         }
     }
     const updateQuantity = async (newQuantity) => {
-        const response = await axios.put(`https://young-crag-76268.herokuapp.com/update/${id}`, { newQuantity })
+        const response = await axios.put(`https://car-house-bcsm.onrender.com/update/${id}`, { newQuantity })
         setNewQuantity(newQuantity);
 
     }
